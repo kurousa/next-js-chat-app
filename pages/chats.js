@@ -10,7 +10,7 @@ const NewMessageForm  = dynamic(() =>
     import("react-chat-engine").then((module) => module.NewMessageForm )
 );
 
-export default function chats() {
+export default function Home() {
     const { username, secret } = useContext(Context);
     const [ showChat, setShowChat ] = useState(false);
     const router = useRouter();
@@ -19,11 +19,11 @@ export default function chats() {
       if (typeof document !== null) {
           setShowChat(true);
       }
-    })
+    }, []);
 
     useEffect(() => {
         if (username.length === 0 || secret.length === 0) router.push('/');
-    })
+    }, [username, secret]);
 
     if(!showChat) return <div />;
 
@@ -32,7 +32,7 @@ export default function chats() {
             <div className="shadow">
                 <ChatEngine
                   height='calc(100vh - 200px)'
-                  projectID={process.env.CHATENGINE_PROJECT_ID}
+                  projectID={process.env.CHATENGINE_PROJECT_IDuseContext}
                   userName={username}
                   userSecret={secret}
                   // Render Custom Components

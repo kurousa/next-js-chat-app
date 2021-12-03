@@ -3,7 +3,7 @@ import { Context } from '../context';
 import { useRouter } from "next/router";
 import axios from "axios";
 
-export default function Auth() {
+const Auth = () => {
   const {
     username,
     secret,
@@ -63,5 +63,7 @@ export default function Auth() {
         </form>
       </div>
     </div>
-)
-}
+  )
+};
+
+export default Auth;
